@@ -4,7 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:staged": "jest",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint 'src/**' --fix",
+      "npm run test:staged",
+      "git add ."
+    ]
   },
   "keywords": [],
   "author": "",
